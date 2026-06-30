@@ -1,0 +1,18 @@
+import { createPeerConnection, getLocalStream } from "./webrtc";
+import { startCall } from "./callService";
+
+export const initiateCall = async (callId, user, receiver) => {
+  const pc = createPeerConnection();
+  const stream = await getLocalStream();
+
+  stream.getTracks().forEach(track => {
+    pc.addTrack(track, stream);
+  });
+
+  const offer = await pc.createOffer();
+  await pc.setLocalDescription(offer);
+
+  await startCall(callId, user, receiver, offer);
+
+  return pc;
+};
