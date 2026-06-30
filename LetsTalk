@@ -1,0 +1,11 @@
+src/
+├── navigation/
+├── screens/
+│   ├── SplashScreen.js
+│   ├── LoginScreen.js
+│   ├── ChatScreen.js
+│   └── AdminScreen.js
+├── services/
+│   └── firebase.js
+├── context/
+└── utils/
